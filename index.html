@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Font Calulator</title>
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="font-calc.js"></script>
+	<style>
+	.sortBtn{
+		float: right;
+	}
+	.sortBtn:after{
+		clear: right;
+	}
+	</style>
+</head>
+<body ng-app="fontCalc">
+	<h1>Font Calculator</h1>
+	<p>If you are anything like me, you find yourself calculating font-sizes from pixels to ems on a daily bases. I was tired of toggling my calculator or even worse guessing at sizes. The design was done and looks great, now it's my job to convert it to code.  However not every designer pays attention to sizing, they use font sizes that are appropriate for their artboard.</p>
+	<h3>Well here is a quick calculator to help you out!</h3>
+
+	<div ng-controller="calcController as calcCtrl" ng-init="btnLock = false">
+		<p>Base Font Size: <input type="text" ng-model="calcCtrl.baseSize"  size="5" ng-disabled="btnLock"> px 
+			<button ng-class="{'locked': btnLock}" ng-click="btnLock = !btnLock" ><span ng-show="!btnLock">lock</span><span ng-show="btnLock">unlock</span> size</button>
+		</p>
+		<form ng-submit="calcCtrl.calc2Em()">
+			<p>Size to Calculate: 
+				<input type="text" ng-model="calcCtrl.calcSize"  size="5" > px 
+				<input type="submit" value="+">
+			</p>
+		</form>
+		<hr>
+		<h2 ng-if="calcCtrl.baseSize">Base Font Size: {{calcCtrl.baseSize}}px</h2>
+		<!-- <button  ng-init="calcCtrl.sort = false" ng-click="calcCtrl.sort = !calcCtrl.sort" class="sortBtn">Sort</button> -->
+		<ul>
+			<li ng-repeat="fontSize in calcCtrl.fontList">{{fontSize.calcPx}}px is {{fontSize.calcEm}} em</li>
+		</ul>
+	</div>
+</body>
+</body>
+</html>
