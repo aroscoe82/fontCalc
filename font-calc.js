@@ -49,7 +49,6 @@
         $scope.btnLock = false;
       }
     };
-
   });
 
   var baseSize = '';
