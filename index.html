@@ -37,7 +37,7 @@
 			</p>
 		</form>
 		<hr>
-		<button ng-if="calcCtrl.fontList" ng-click="resetSet()" class="pos-right">Reset</button>
+		<button ng-click="resetSet()" class="pos-right">Reset</button>
 		<h2 ng-if="calcCtrl.baseSize">Base Font Size: {{calcCtrl.baseSize}}px</h2>
 		<ul>
 			<li ng-repeat="fontSize in calcCtrl.fontList">{{fontSize.calcPx}}px is {{fontSize.calcEm}} em</li>

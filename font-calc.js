@@ -17,12 +17,12 @@
     calcCtrl.baseSize = baseFontInStore || '';
     calcCtrl.fontList = fontListInStore || [];
 
-    // watch for change and save to storage
+    // // watch for change and save to storage
     $scope.$watch('calcCtrl.baseSize', function () {
       localStorageService.set('baseFontSize', calcCtrl.baseSize);
     }, true);
 
-    // watch for change and save to storage
+    // // watch for change and save to storage
     $scope.$watch('calcCtrl.fontList', function () {
       localStorageService.set('fontList', calcCtrl.fontList);
     }, true);
@@ -36,13 +36,18 @@
       if(calcCtrl.baseSize != 0 && calcCtrl.calcSize !=0){
         var emVal = calcCtrl.calcSize / calcCtrl.baseSize;
         calcCtrl.fontList.push({baseSize: calcCtrl.baseSize, calcEm: emVal, calcPx: calcCtrl.calcSize});
-        //calcCtrl.fontList.list.push({calcEm: emVal,  calcPx: calcCtrl.calcSize});
         calcCtrl.calcSize = '';
       }
     };
 
     $scope.resetSet = function() {
       localStorageService.remove('baseFontSize', 'fontList');
+      calcCtrl.baseSize = '';
+      calcCtrl.fontList = [];
+
+      if($scope.btnLock == true){
+        $scope.btnLock = false;
+      }
     };
 
   });
