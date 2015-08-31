@@ -13,6 +13,12 @@
 	.sortBtn:after{
 		clear: right;
 	}
+	.pos-right{
+		float: right;
+	}
+	.pos-right:after{
+		clear: right;
+	}
 	</style>
 </head>
 <body ng-app="fontCalc">
@@ -31,8 +37,8 @@
 			</p>
 		</form>
 		<hr>
+		<button ng-if="calcCtrl.fontList" ng-click="resetSet()" class="pos-right">Reset</button>
 		<h2 ng-if="calcCtrl.baseSize">Base Font Size: {{calcCtrl.baseSize}}px</h2>
-		<!-- <button  ng-init="calcCtrl.sort = false" ng-click="calcCtrl.sort = !calcCtrl.sort" class="sortBtn">Sort</button> -->
 		<ul>
 			<li ng-repeat="fontSize in calcCtrl.fontList">{{fontSize.calcPx}}px is {{fontSize.calcEm}} em</li>
 		</ul>

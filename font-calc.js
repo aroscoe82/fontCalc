@@ -4,7 +4,7 @@
   .module('fontCalc', ['LocalStorageModule'])
   .config(function (localStorageServiceProvider) {
     localStorageServiceProvider
-      // .setPrefix('fontCalc')
+      .setPrefix('fontCalc')
       // .setStorageType('sessionStorage')
       // .setNotify(true, true)
   })
@@ -40,6 +40,11 @@
         calcCtrl.calcSize = '';
       }
     };
+
+    $scope.resetSet = function() {
+      localStorageService.remove('baseFontSize', 'fontList');
+    };
+
   });
 
   var baseSize = '';
